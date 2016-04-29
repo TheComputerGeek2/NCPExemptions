@@ -6,12 +6,20 @@ import fr.neatmonster.nocheatplus.checks.CheckType;
 
 public class ExemptionTicket {
 	
-	private int rID;
+	private long rID;
 	public CheckType[] checkTypes;
 	
 	public ExemptionTicket(CheckType... checkTypes) {
 		this.checkTypes = checkTypes;
-		rID = ThreadLocalRandom.current().nextInt();
+		rID = ThreadLocalRandom.current().nextLong();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if (other instanceof ExemptionTicket) {
+			return rID == ((ExemptionTicket)other).rID;
+		}
+		return false;
 	}
 	
 }
